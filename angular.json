@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "uploadVideoFiles": {
@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "uploadVideoFiles"
+    }
+  },
+  "defaultProject": "uploadVideoFiles",
+  "cli": {
+    "analytics": "7ddcfd0d-2cec-4dab-9112-608ce9424141"
+  }
 }
