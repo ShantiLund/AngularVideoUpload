@@ -8,20 +8,20 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   selectedFile:File=null;
-  
+ constructor(private uploadService:UploadVideoService){}
   onFileSelected(event){
     this.selectedFile=<File>event.target.files[0];
     console.log(event.target.files[0].name)  
   }
 
   upload(){
+  
+    console.log("Button clicked");
     const formData=new FormData();
     
     formData.append('video',this.selectedFile,this.selectedFile.name)
-    console.log("Button clicked");
-  }
-  
-  ngOnInit(): void {
-    
-  }  
+    this.uploadService.upload(formData).subscribe(res=>{
+     console.log(res);
+     }  );
 }
+  }
