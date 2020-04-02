@@ -13,7 +13,7 @@ export class UploadVideoService {
   constructor(public http:HttpClient){}
    
   public upload(payload):Observable<any>{
-     return this.http.post(this.baseurl+'upload/video', payload).pipe(map((res) => {
+     return this.http.post(this.baseurl+'upload/video', payload,{responseType: 'text'}).pipe(map((res) => {
       console.log("Response success");
       return res;
     }, err => {
@@ -21,4 +21,13 @@ export class UploadVideoService {
       return err;
     }));
   }
+  public getLink():Observable<any>{
+    return this.http.get(this.baseurl+'getvideolink').pipe(map((res) => {
+     console.log("Response success");
+     return res;
+   }, err => {
+     console.log("Response error");
+     return err;
+   }));
+ }
 }

@@ -26,4 +26,12 @@ export class AppComponent {
       console.log(res);
      }  );
 }
+
+getVideoLink()
+{
+  console.log("get Button clicked")
+  this.uploadService.getLink().subscribe(res=>{
+    console.log(res);
+   }  );
+}
   }
