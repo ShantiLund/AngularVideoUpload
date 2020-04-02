@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   selectedFile:File=null;
+   videoName="";
   constructor(private uploadService:UploadVideoService){}
   onFileSelected(event){
     this.selectedFile=<File>event.target.files[0];
@@ -19,9 +20,12 @@ export class AppComponent {
   upload(){
   
     console.log("Button clicked");
-    const formData=new FormData();
     
-    formData.append('video',this.selectedFile,this.selectedFile.name)
+    const formData=new FormData();
+    const name=this.selectedFile.name;
+    //console.log(name)
+    formData.append('link',this.selectedFile,this.selectedFile.name)
+      formData.append('name',this.selectedFile.name)
      this.uploadService.upload(formData).subscribe(res=>{
       console.log(res);
      }  );
@@ -29,8 +33,13 @@ export class AppComponent {
 
 getVideoLink()
 {
-  console.log("get Button clicked")
-  this.uploadService.getLink().subscribe(res=>{
+  //console.log("File name is"+this.selectedFile.name);
+  let payload = {
+    name: this.selectedFile.name
+  }
+  
+  
+  this.uploadService.getLink(payload).subscribe(res=>{
     console.log(res);
    }  );
 }
